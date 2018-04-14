@@ -6,8 +6,8 @@ const pg = require('pg');
 const PORT = process.env.PORT;
 const app = express();
 
-const db_URL = process.env.db_URL;
-const client = new pg.Client(db_URL);
+const DATABASE_URL = process.env.DATABASE_URL;
+const client = new pg.Client(DATABASE_URL);
 client.connect();
 
 app.use(express.json());
