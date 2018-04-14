@@ -25,6 +25,7 @@
   "homepage": "https://github.com/eric-lab-11-production/book-list-server#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "fs": "0.0.1-security",
     "pg": "^7.4.1"
   }
 }
