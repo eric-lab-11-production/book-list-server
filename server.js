@@ -7,12 +7,13 @@ const PORT = process.env.PORT;
 const app = express();
 
 const DATABASE_URL = process.env.DATABASE_URL;
+const CLIENT_URL = process.env.CLIENT_URL;
 const client = new pg.Client(DATABASE_URL);
 client.connect();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('../book-list-client'));
+app.use(express.static(CLIENT_URL));
 
 app.get('/test', (req,res) => {
   client.query(`
