@@ -15,16 +15,16 @@ client.on('error', err => console.log(err));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
-//app.use(express.static('../book-list-client));
+//app.use(cors());
+app.use(express.static(CLIENT_URL));
 
 app.get('/test', (req,res) => {
   client.query(`
-    SELECT author 
+    SELECT * 
     FROM books;
     `).then(result => res.send(result.rows))
     .catch(console.error);
 });
 
-app.get('*',(req,res) => res.redirect(CLIENT_URL));
+//app.get('*',(req,res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Active on port ${PORT}`));
