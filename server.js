@@ -12,7 +12,7 @@ client.connect();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-//app.use(express.static, ('../book-list-client'));
+app.use(express.static('../book-list-client'));
 
 app.get('/test', (req,res) => {
   client.query(`
