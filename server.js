@@ -16,8 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/test', (req,res) => {
   client.query(`
-        SELECT author FROM books;
-        `).then(result => res.send(result.rows));
+    SELECT author 
+    FROM books;
+    `).then(result => res.send(result.rows))
+    .catch(console.error);
 });
 
 app.listen(PORT, () => console.log(`Active on port ${PORT}`));
