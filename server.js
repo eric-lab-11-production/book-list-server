@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 //app.use(cors());
 app.use(express.static(CLIENT_URL));
 
-app.get('/test', (req,res) => {
+app.get('/books', (req,res) => {
   client.query(`
     SELECT * 
     FROM books;
