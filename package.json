@@ -1,0 +1,30 @@
+{
+  "name": "book-list-server",
+  "version": "1.0.0",
+  "description": "A server for a book application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eric-lab-11-production/book-list-server.git"
+  },
+  "keywords": [
+    "node",
+    "book",
+    "production",
+    "JS"
+  ],
+  "author": "Eric Singleton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eric-lab-11-production/book-list-server/issues"
+  },
+  "homepage": "https://github.com/eric-lab-11-production/book-list-server#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "pg": "^7.4.1"
+  }
+}
