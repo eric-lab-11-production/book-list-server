@@ -8,7 +8,7 @@ const PORT = process.env.PORT;
 const app = express();
 
 const allowed_url = [
-  'http://localhost:3000/',
+  'http://localhost:3000/book-list-client',
   'https://eric-lab-11-production.github.io/book-list-client/',
 ];
 
@@ -27,7 +27,11 @@ app.use(cors({
     return callback(null,true);
   }
 }));
-// app.use(express.static(CLIENT_URL));
+app.use(express.static(CLIENT_URL));
+
+app.get('/', (req,res) => {
+  res.sendFile('index.html', {root: '../book-list-client/'});
+});
 
 app.get('/books', (req,res) => {
   client.query(`
@@ -36,6 +40,6 @@ app.get('/books', (req,res) => {
     `).then(result => res.send(result.rows))
     .catch(console.error);
 });
-
+//console.log(CLIENT_URL);
 app.get('*',(req,res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Active on port ${PORT}`));
