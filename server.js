@@ -43,14 +43,14 @@ app.use(cors());
 //   res.sendFile('index.html', {root: '../book-list-client'});
 // });
 
-app.get('/',(req,res) => {
-  res.setHeader('Access-Control-Allow-Origin', req);
-  res.setHeader('Access-Control-Allow-Methods', 'PUT');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-type, Accept');
-  res.send(!CLIENT_URL);
-  // res.sendFile('index.html', {root: '../book-list-client'});
+// app.get('/',(req,res) => {
+//   res.setHeader('Access-Control-Allow-Origin', req);
+//   res.setHeader('Access-Control-Allow-Methods', 'PUT');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-type, Accept');
+//   res.send(!CLIENT_URL);
+//   // res.sendFile('index.html', {root: '../book-list-client'});
 
-});
+// });
 // app.get('/',(req,res) => res.redirect(CLIENT_URL));
 
 app.get('/books', (req,res) => {
