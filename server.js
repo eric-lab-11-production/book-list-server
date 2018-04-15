@@ -12,6 +12,7 @@ const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 client.on('error', err => console.log(err));
 
+
 const allowed_url = [
   'http://localhost:8080',
   'https://eric-lab-11-production.github.io/book-list-client/',
@@ -21,20 +22,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 //app.use(express.static('../book-list-client/'));
-// app.use(cors({
-//   origin: function(origin, callback){
-//     if(!origin) return callback(null,true);
-//     if(allowed_url.indexOf(origin)===-1) return callback('No', false);
-//     return callback(null,true);
-//   },
-//   credentials: true,
-// }));
 
 // app.use((req,res,next) => {
 //   res.setHeader('Access-Control-Allow-Origin', '*');
-//   res.setHeader('Access-Control-Allow-Methods', 'GET');
-//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-//   res.setHeader('Access-Control-Allow-Credentials',true);
+//   res.setHeader('Access-Control-Allow-Headers', 'Origin,X-Requested-With,content-type');
 //   next();
 // });
 
@@ -43,16 +34,6 @@ app.use(cors());
 //   res.sendFile('index.html', {root: '../book-list-client'});
 // });
 
-// app.get('/',(req,res) => {
-//   res.setHeader('Access-Control-Allow-Origin', req);
-//   res.setHeader('Access-Control-Allow-Methods', 'PUT');
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-type, Accept');
-//   res.send(!CLIENT_URL);
-//   // res.sendFile('index.html', {root: '../book-list-client'});
-
-// });
-// app.get('/',(req,res) => res.redirect(CLIENT_URL));
-
 app.get('/books', (req,res) => {
   client.query(`
     SELECT * 
@@ -60,6 +41,8 @@ app.get('/books', (req,res) => {
     `).then(result => res.send(result.rows))
     .catch(console.error);
 });
+
+app.get('/',(req,res) => res.send('Test'));
 
 app.get('*',(req,res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Active on port ${PORT}`));
