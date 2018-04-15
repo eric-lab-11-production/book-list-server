@@ -20,7 +20,7 @@ const allowed_url = [
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-app.use(express.static('../book-list-client/'));
+//app.use(express.static('../book-list-client/'));
 // app.use(cors({
 //   origin: function(origin, callback){
 //     if(!origin) return callback(null,true);
@@ -42,9 +42,13 @@ app.use(express.static('../book-list-client/'));
 // app.get('/', (req,res) => {
 //   res.sendFile('index.html', {root: '../book-list-client'});
 // });
+
 app.get('/',(req,res) => {
-  console.log(res.statusCode);
-  res.sendFile('index.html', {root: '../book-list-client'});
+  res.setHeader('Access-Control-Allow-Origin', req);
+  res.setHeader('Access-Control-Allow-Methods', 'PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-type, Accept');
+  res.send(CLIENT_URL);
+  // res.sendFile('index.html', {root: '../book-list-client'});
 
 });
 // app.get('/',(req,res) => res.redirect(CLIENT_URL));
