@@ -34,6 +34,8 @@ app.use(cors());
 //   res.sendFile('index.html', {root: '../book-list-client'});
 // });
 
+// app.get('/',(req,res) => res.send('Test'));
+
 app.get('/books', (req,res) => {
   client.query(`
     SELECT * 
@@ -41,8 +43,6 @@ app.get('/books', (req,res) => {
     `).then(result => res.send(result.rows))
     .catch(console.error);
 });
-
-app.get('/',(req,res) => res.send('Test'));
 
 app.get('*',(req,res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Active on port ${PORT}`));
