@@ -12,6 +12,10 @@ const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 client.on('error', err => console.log(err));
 
+const allowed_url = [
+  'http://localhost:8080',
+  'https://eric-lab-11-production.github.io/book-list-client/',
+];
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -49,8 +53,6 @@ app.use(cors());
 // });
 // app.get('/',(req,res) => res.redirect(CLIENT_URL));
 
-app.get('*',(req,res) => res.redirect(CLIENT_URL));
-
 app.get('/books', (req,res) => {
   client.query(`
     SELECT * 
@@ -59,4 +61,5 @@ app.get('/books', (req,res) => {
     .catch(console.error);
 });
 
+app.get('*',(req,res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Active on port ${PORT}`));
