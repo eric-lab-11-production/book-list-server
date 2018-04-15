@@ -38,9 +38,9 @@ app.use(cors());
 // });
 
 //app.use(express.static('../book-list-client'));
-// app.get('/', (req,res) => {
-//   res.sendFile('index.html', {root: '../book-list-client'});
-// });
+app.get('/', (req,res) => {
+  res.sendFile('index.html', {root: '../book-list-client'});
+});
 //app.get('/', (req,res) => res.send('I AM ALIVE'));
 
 app.get('/books', (req,res) => {
