@@ -54,8 +54,8 @@ app.use(cors());
 // app.get('/',(req,res) => res.redirect(CLIENT_URL));
 
 app.get('*',(req,res) => {
-  console.log(req.statusCode);
-  res.send(req.statusCode);
+  console.log(req.hostname);
+  res.send(req.hostname);
   // res.redirect(CLIENT_URL);
 });
 
