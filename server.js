@@ -1,4 +1,3 @@
-
 'use strict';
 
 const express = require('express');
@@ -15,20 +14,12 @@ client.on('error', err => console.log(err));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-//app.use(express.static('../book-list-client/'));
 
-// app.use((req,res,next) => {
-//   res.setHeader('Access-Control-Allow-Origin', '*');
-//   res.setHeader('Access-Control-Allow-Headers', 'Origin,X-Requested-With,content-type');
-//   next();
-// });
-
-//app.use(express.static('../book-list-client'));
-// app.get('/', (req,res) => {
-//   res.sendFile('index.html', {root: '../book-list-client'});
-// });
-
-// app.get('/',(req,res) => res.send('Test'));
+app.use((req,res,next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin,X-Requested-With,content-type');
+  next();
+});
 
 app.get('/books', (req,res) => {
   client.query(`
