@@ -51,5 +51,5 @@ app.get('/books', (req,res) => {
     .catch(console.error);
 });
 
-app.get('/',(req,res) => res.redirect(CLIENT_URL));
+app.get('*',(req,res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Active on port ${PORT}`));
