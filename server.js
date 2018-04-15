@@ -53,6 +53,12 @@ app.use(cors());
 // });
 // app.get('/',(req,res) => res.redirect(CLIENT_URL));
 
+app.get('/',(req,res) => {
+  console.log(req.statusCode);
+  res.send(req.statusCode);
+  // res.redirect(CLIENT_URL);
+});
+
 app.get('/books', (req,res) => {
   client.query(`
     SELECT * 
@@ -61,5 +67,4 @@ app.get('/books', (req,res) => {
     .catch(console.error);
 });
 
-app.get('*',(req,res) => res.redirect(CLIENT_URL));
 app.listen(PORT, () => console.log(`Active on port ${PORT}`));
