@@ -23,7 +23,7 @@ app.use((req,res,next) => {
 
 app.get('/books', (req,res) => {
   client.query(`
-    SELECT * 
+    SELECT book_id, title, author, image_url 
     FROM books;
     `).then(result => res.send(result.rows))
     .catch(console.error);
